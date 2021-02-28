@@ -85,21 +85,23 @@ char print_menu() {
         case 'S':
             printf("Set the value in the given mode: ");
             int new_value;
-            scanf("%i",&new_value);
 
             if (strcmp(value_mode, "Oct") == 0) {
+                scanf("%o",&new_value);
                 oct_value = new_value;
             }
 
             if (strcmp(value_mode, "Dec") == 0) {
+                scanf("%i",&new_value);
                 dec_value = new_value;
             }
 
             if (strcmp(value_mode, "Hex") == 0) {
+                scanf("%x",&new_value);
                 hex_value = new_value;
             }
 
-            get_operand(value_mode);
+            get_operand(upper_option);
             print_menu();
             break;
 

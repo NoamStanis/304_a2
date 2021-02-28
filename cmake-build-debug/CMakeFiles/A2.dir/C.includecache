@@ -9,6 +9,8 @@
 /Users/noam/Desktop/WILLIAM AND MARY/SPRING 2021/Computer Organization/A2/acc.c
 stdio.h
 -
+string.h
+-
 ctype.h
 -
 

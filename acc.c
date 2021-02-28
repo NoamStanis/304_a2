@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <ctype.h>
 
 
@@ -19,8 +20,7 @@ void print_acc(short acc, char mode) {
 char print_menu() {
     char option;
     char valid_options[12] = {'O','o','H','h','D','d','C','c','S','s','Q','q'};
-    int option_valid = 0;
-    printf("****************************************\n"
+    printf("\n****************************************\n"
            "* Accumulator:         Input Mode: %.3s *\n"
            "* Hex : %.4x                           *\n"
            "* Octal : %.6o                       *\n"
@@ -41,36 +41,39 @@ char print_menu() {
     char upper_option = toupper(option);
     switch (upper_option) {
         case 'O':
-            printf("\nSelected Octal Mode");
-            option_valid = 1;
+            printf("\nMode is Octal");
+            strncpy(mode,"Oct",3);
+            print_menu();
             break;
 
         case 'H':
-            printf("\nSelected Hexadecimal Mode");
-            option_valid = 1;
+            printf("\nMode is Hexadecimal");
+            strncpy(mode,"Hex",3);
+            print_menu();
             break;
 
         case 'D':
-            printf("\nSelected Decimal Mode");
-            option_valid = 1;
+            printf("\nMode is Decimal");
+            strncpy(mode,"Dec",3);
+            print_menu();
             break;
 
         case 'C':
             oct_value = 0;
+            dec_value = 0;
+            hex_value = 0;
             printf("\nCleared accumulator values.");
-            option_valid = 1;
+            print_menu();
             break;
 
         case 'S':
-            option_valid = 1;
             break;
 
         case 'Q':
-            option_valid = 1;
             break;
 
         default:
-            printf("\nInvalid input\n");
+            printf("\nan invalid option has been entered.\n");
             print_menu();
             break;
     }

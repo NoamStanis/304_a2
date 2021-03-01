@@ -4,25 +4,11 @@
 
 
 char value_mode[4] = "Dec";
-int dec_value,hex_value,oct_value = 0;
+short dec_value,hex_value,oct_value = 0;
+short actual_value = 0;
 
 // return the correct value given the mode
 short get_operand(char mode) {
-    int *og_value;
-    switch(mode) {
-
-        case 'O':
-            og_value = &oct_value;
-            break;
-
-        case 'H':
-            og_value = &hex_value;
-            break;
-
-        case 'D':
-            og_value = &dec_value;
-            break;
-    }
     return 0;
 }
 
@@ -38,10 +24,10 @@ char print_menu() {
     char valid_options[12] = {'O','o','H','h','D','d','C','c','S','s','Q','q'};
     printf("\n****************************************\n"
            "* Accumulator:         Input Mode: %.3s *\n"
-           "* Hex : %.4x                           *\n"
-           "* Octal : %.6o                       *\n"
-           "* Decimal : %u                          *\n"
-           "****************************************\n", value_mode, hex_value, oct_value, dec_value);
+           "* Hex : %04hX                           *\n"
+           "* Octal : %06ho                       *\n"
+           "* Decimal : %-6hd                     *\n"
+           "****************************************\n", value_mode, actual_value, actual_value, actual_value);
 
     printf("\nPlease select one of the following options: \n");
     printf("\nO Octal Mode\n"
@@ -75,33 +61,32 @@ char print_menu() {
             break;
 
         case 'C':
-            oct_value = 0;
-            dec_value = 0;
-            hex_value = 0;
+            actual_value = 0;
             printf("\nCleared accumulator values.");
             print_menu();
             break;
 
         case 'S':
             printf("Set the value in the given mode: ");
-            int new_value;
+            short new_value;
 
             if (strcmp(value_mode, "Oct") == 0) {
-                scanf("%o",&new_value);
-                oct_value = new_value;
+                scanf("%ho",&new_value);
+                printf("%ho",new_value);
+                actual_value = new_value;
             }
 
             if (strcmp(value_mode, "Dec") == 0) {
-                scanf("%i",&new_value);
-                dec_value = new_value;
+                scanf("%hd",&new_value);
+                printf("%hd",new_value);
+                actual_value = new_value;
             }
 
             if (strcmp(value_mode, "Hex") == 0) {
-                scanf("%x",&new_value);
-                hex_value = new_value;
+                scanf("%hx",&new_value);
+                actual_value = new_value;
             }
 
-            get_operand(upper_option);
             print_menu();
             break;
 

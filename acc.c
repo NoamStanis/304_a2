@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 
 char value_mode = 'd';
-short dec_value,hex_value,oct_value = 0;
 short actual_value = 0;
 short quit = 0;
 
@@ -143,6 +141,5 @@ int main() {
     print_acc(actual_value,value_mode);
     while(!quit) {
         get_operand(print_menu());
-
     }
 }

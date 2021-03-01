@@ -41,21 +41,22 @@ char print_menu() {
 
     scanf(" %c", &option);
     char upper_option = toupper(option);
+    short new_value;
     switch (upper_option) {
         case 'O':
-            printf("\nMode is Octal");
+            printf("Mode is Octal\n");
             strncpy(value_mode, "Oct", 3);
             print_menu();
             break;
 
         case 'H':
-            printf("\nMode is Hexadecimal");
+            printf("Mode is Hexadecimal\n");
             strncpy(value_mode, "Hex", 3);
             print_menu();
             break;
 
         case 'D':
-            printf("\nMode is Decimal");
+            printf("Mode is Decimal\n");
             strncpy(value_mode, "Dec", 3);
             print_menu();
             break;
@@ -67,22 +68,23 @@ char print_menu() {
             break;
 
         case 'S':
-            printf("Set the value in the given mode: ");
-            short new_value;
 
             if (strcmp(value_mode, "Oct") == 0) {
+                printf("Enter octal value: ");
                 scanf("%ho",&new_value);
                 printf("%ho",new_value);
                 actual_value = new_value;
             }
 
             if (strcmp(value_mode, "Dec") == 0) {
+                printf("Enter decimal value: ");
                 scanf("%hd",&new_value);
                 printf("%hd",new_value);
                 actual_value = new_value;
             }
 
             if (strcmp(value_mode, "Hex") == 0) {
+                printf("Enter hex value: ");
                 scanf("%hx",&new_value);
                 actual_value = new_value;
             }

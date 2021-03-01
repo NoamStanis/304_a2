@@ -24,22 +24,23 @@ char print_menu() {
     char valid_options[12] = {'O','o','H','h','D','d','C','c','S','s','Q','q'};
     printf("\n****************************************\n"
            "* Accumulator:         Input Mode: %.3s *\n"
-           "* Hex : %04hX                           *\n"
-           "* Octal : %06ho                       *\n"
-           "* Decimal : %-6hd                     *\n"
+           "*   Hex     :  %04hX                    *\n"
+           "*   Octal   :  %06ho                  *\n"
+           "*   Decimal :  %-6hd                  *\n"
            "****************************************\n", value_mode, actual_value, actual_value, actual_value);
 
     printf("\nPlease select one of the following options: \n");
-    printf("\nO Octal Mode\n"
-           "H Hexidecimal Mode\n"
-           "D Decimal Mode\n\n"
-           "C Clear Accumulator\n"
-           "S Set Accumulator\n\n"
-           "Q Quit\n\n");
+    printf("\nO  Octal Mode\n"
+           "H  Hexadecimal Mode\n"
+           "D  Decimal Mode\n\n"
+           "C  Clear Accumulator\n"
+           "S  Set Accumulator\n\n"
+           "Q  Quit\n\n");
 
     printf("Option: ");
 
     scanf(" %c", &option);
+    printf("%c\n", option);
     char upper_option = toupper(option);
     short new_value;
     switch (upper_option) {
@@ -63,7 +64,6 @@ char print_menu() {
 
         case 'C':
             actual_value = 0;
-            printf("\nCleared accumulator values.");
             print_menu();
             break;
 
@@ -72,20 +72,20 @@ char print_menu() {
             if (strcmp(value_mode, "Oct") == 0) {
                 printf("Enter octal value: ");
                 scanf("%ho",&new_value);
-                printf("%ho",new_value);
+                printf("%ho\n",new_value);
                 actual_value = new_value;
             }
 
             if (strcmp(value_mode, "Dec") == 0) {
                 printf("Enter decimal value: ");
                 scanf("%hd",&new_value);
-                printf("%hd",new_value);
+                printf("%hd\n",new_value);
                 actual_value = new_value;
             }
 
             if (strcmp(value_mode, "Hex") == 0) {
                 printf("Enter hex value: ");
-                scanf("%hx",&new_value);
+                scanf("%hx\n",&new_value);
                 actual_value = new_value;
             }
 
